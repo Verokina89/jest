@@ -12,7 +12,7 @@ function resetProducts () {
 //function para agregar prductos. verifica si nombre y precio no estan definidos.
 function addProduct(name, price) {
     if (!name || !price) {
-        throw new Error('Name and price must be defined');
+        throw new Error('Name and Price must be defined');
     }
     const productExists = products.some(product => product.name === name);
     if (productExists) {
@@ -39,18 +39,27 @@ function getProducts() {
     return products;
 }
 
+//function para devolver un solo producto por su id (acceder a cada individualmente). (esto evita tener que iterar en toda la lista)
+function getProduct(id) {
+    const product = products.find(product => product.id === id);
+    if (!product) {    //lanza error si no se encuentra el producto 
+        throw new Error('Product not found');
+    }
+    return product;
+}
+
 //function buscar productos por id
 function updateProduct(id, name, price) {
     const productIndex = products.findIndex(product => product.id === id);
     if (productIndex === -1) {
         throw new Error('Product not found');
     }
-// Verifica si el nuevo nombre ya existe en otro producto
+    // Verifica si el nuevo nombre ya existe en otro producto
     const nameExists = products.some((product, i) => product.name === name && i !== productIndex);
     if (nameExists) {
         throw new Error('Product with the same name already exists');
     }
-
+    
     products[productIndex] = { id, name, price };
 }
 
@@ -60,6 +69,8 @@ module.exports = {
     addProduct,
     removeProduct,
     getProducts,
+    getProduct,
     updateProduct
 };
+
 

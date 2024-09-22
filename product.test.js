@@ -26,12 +26,12 @@ describe('addProduct', () => {   //agrupa los tests relacionados con la función
     });
 //-Lanzar un error si el nombre o el precio no están definidos.
     it('should throw an error if name or price is missing', () => {
-        expect(() => addProduct(undefined, 240)).toThrow('Name and price must be defined');
+        expect(() => addProduct(undefined, 240)).toThrow('Name and Price must be defined');
         expect(() => addProduct('Monitor 29"', undefined)).toThrow('Name and Price must be defined')
     })
 //-Lanzar un error si el producto ya existe. Verifica que la function addProduct dara un error si el nombre o el precio no estan definidos(paramtros necesarios pra gregar un poducto)
     it('should throw an error if the product already exists', () => {
-        addProduct('Monitor', 240);
+        addProduct('Monitor 29"', 240);
         expect(() => addProduct('Monitor 29"', 200)).toThrow('Product already exists')
     }); 
     
@@ -59,8 +59,6 @@ describe('removeProduct', () => {
     });
 });
 
-
-
 //test para updateProduct
 describe('updateProduct', () => {
     it('should update a product by id', () => {
@@ -68,7 +66,7 @@ describe('updateProduct', () => {
         updateProduct(1, 'Monitor 32"', 300); //actualiza el producto con id 1
         const product = getProduct(1); //obtener el producto actualizado
         expect(product.name).toBe('Monitor 32"'); //comprueba el nombre nuevo
-        expect(product.price).toBe(280); //comprueba el nuevo precio
+        expect(product.price).toBe(300); //comprueba el nuevo precio
     });
 
     it('should throw an error if product does not exist', () => {
