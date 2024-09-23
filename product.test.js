@@ -26,8 +26,8 @@ describe('addProduct', () => {   //agrupa los tests relacionados con la función
     });
 //-Lanzar un error si el nombre o el precio no están definidos.
     it('should throw an error if name or price is missing', () => {
-        expect(() => addProduct(undefined, 240)).toThrow('Name and Price must be defined');
-        expect(() => addProduct('Monitor 29"', undefined)).toThrow('Name and Price must be defined')
+        expect(() => addProduct(undefined, 240)).toThrow('Name and Price must be defined');  // s puede pasar y devuelve con el toThrow vacio; para evitar errores.
+        expect(() => addProduct('Monitor 29"', undefined)).toThrow('Name and Price must be defined'); // no es necesario con el primero vale
     })
 //-Lanzar un error si el producto ya existe. Verifica que la function addProduct dara un error si el nombre o el precio no estan definidos(paramtros necesarios pra gregar un poducto)
     it('should throw an error if the product already exists', () => {
